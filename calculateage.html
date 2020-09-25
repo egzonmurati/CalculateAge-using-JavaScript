@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculate Age</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<style>
+		#alert{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	
+ <div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+     <div class="jumbotron">
+      <p class="lead">Calculate birthday date with 
+             today using Javascript</p>
+       </div>
+		<div class="input-group mb-3">
+		  <input type="date" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2" id="dateStart">
+		  <div class="input-group-append">
+		  <button type="button" class="btn btn-primary" onclick="change()">Calculate Age</button>
+		  </div>
+       </div>
+    </div>
+  </div>
+    <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+    <div class="alert alert-danger" id="alert" role="alert">
+     
+    </div>
+    </div>
+  </div>
+  
+  <div class="row justify-content-md-center">
+
+      <div class="col col-lg-2">
+		  <div class="contain" id="year">
+		    <h1 class="heading1" id="showYears">0</h1>
+		    <h3 class="heading2">Years</h3>
+          </div>
+      </div>
+      <div class="col-md-auto">
+       <div class="contain" id="month">
+		  <h1 class="heading1" id="showMonths">0</h1>
+		  <h3 class="heading2">Months</h3>
+       </div>
+      </div>
+    <div class="col col-lg-2">
+       <div class="contain" id="days">
+		  <h1 class="heading1" id="showDays">0</h1>
+		  <h3 class="heading2">Days</h3>
+       </div>	  	
+    </div>
+  </div>
+ </div>
+  <script>
+  	function change(){
+  		var bDay = document.getElementById("dateStart").value;
+  		var bDays = new Date(bDay);
+  		console.log(bDays);
+  		var today = new Date();
+  		var diff = today - bDays;
+  		 if(today < bDays){
+  		var alertMsg = document.getElementById("alert").style.display = "block";
+  		document.getElementById("alert").innerHTML="Invalid Date Range!";
+
+          }else{
+  		 var years=Math.floor(diff/(365.25*24*60*60*1000));
+  var remaining=Math.floor(diff%(365.25*24*60*60*1000));
+  var months=Math.floor(remaining/((365.25/12)*24*60*60*1000));
+  var remaining=Math.floor(remaining%((365.25/12)*24*60*60*1000));
+  var days=Math.floor(remaining/(24*60*60*1000));
+  var showYears=document.getElementById('showYears').innerHTML=years;
+  var showMonths=document.getElementById('showMonths').innerHTML=months;
+  var showDays=document.getElementById('showDays').innerHTML=days;
+  }
+  	}
+  </script>
+</body>
+</html>
